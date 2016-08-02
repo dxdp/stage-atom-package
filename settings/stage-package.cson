@@ -1,0 +1,5 @@
+'.source.stage-package':
+  'editor':
+    'commentStart': '#-- '
+    'foldEndPattern': '^\\s*(\\}|// \\}\\}\\}$)'
+    'increaseIndentPattern': '^.*:'

@@ -1,0 +1,70 @@
+'scopeName': 'source.stage-package'
+'name': 'Stage'
+'fileTypes': ['stage']
+'foldingStartMarker': '^[a-zA-Z0-9.-_]+:.*\\\n'
+'foldingStopMarker': '^(.*(?<!\\)\n)'
+'patterns': [
+    {
+        'begin': '(^[ \\t]+)?(?=#--)'
+        'beginCaptures':
+            '1':
+                'name': 'punctuation.whitespace.comment.leading.stage-package'
+        'end': '(?!\\G)'
+        'patterns': [
+            {
+                'begin': '#--'
+                'beginCaptures':
+                    '0':
+                        'name': 'punctuation.definition.comment.stage-package'
+                'end': '\\n'
+                'name': 'comment.line.number-sign.stage-package'
+            }
+        ]
+    }
+    {
+        'begin': '(^.*?):'
+        'beginCaptures':
+            '1':
+                'name': 'stage-package.definition.start.variable'
+        'end': '^(?=.*:\\s*(#--|$))'
+        'patterns': [
+            {
+                'begin': '^\\s*\\.(.*?)='
+                'beginCaptures':
+                    '1':
+                        'name': 'stage-package.property-setter.keyword'
+                'end': '\\n'
+                'patterns': [
+                    {
+                        'match': '#\\{([^\\{]*?)\\}'
+                        'captures':
+                            '1':
+                                'name': 'stage-package.property-setter.interpolation.variable'
+                        'name': 'stage-package.comment'
+                    }
+                ]
+            }
+            {
+                'begin': '#--'
+                'beginCaptures':
+                    '0':
+                        'name': 'punctuation.definition.comment.stage-package'
+                'end': '\\n'
+                'name': 'stage-package.comment'
+            }
+            {
+                'match': '#\\{([^\\{]*?)\\}'
+                'captures':
+                    '1':
+                        'name': 'stage-package.property-setter.interpolation.variable'
+                'name': 'stage-package.comment'
+            }
+            {
+                'match': '\\b(superview|self|layoutAttributes|(-?\\d+\\.\\d*|-?\\.?\\d+))\\b'
+                'captures':
+                    '1':
+                        'name': 'stage-package.property-setter.constant'
+            }
+        ]
+    }
+]
